@@ -2,11 +2,11 @@
 
 Use this when the user asks about already-prepared documents. Do **not** run preprocess unless they explicitly ask to ingest or refresh.
 
-CLI is `scripts/kb.py` in the parent skill folder. From the workspace root:
+CLI is `scripts/kb.py` in the parent skill folder. Use **uv** for the venv (`uv venv`, `uv pip install -r` this skill's `requirements.txt`). From the workspace root:
 
 ```bash
-python .github/skills/ragless-kb/scripts/kb.py python
-python .cursor/skills/ragless-kb/scripts/kb.py search "<question>" --limit 12
+uv run python .github/skills/ragless-kb/scripts/kb.py python
+uv run python .cursor/skills/ragless-kb/scripts/kb.py search "<question>" --limit 12
 ```
 
 If this skill lives under `.cursor/skills/ragless-kb/`, use that path.

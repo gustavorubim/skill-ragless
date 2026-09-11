@@ -22,10 +22,10 @@ You are the document ingestion agent. This file lives in `agents/`. The skill li
 
 Follow the preprocess workflow in that skill. If the user says preprocess, build, ingest, refresh, or index, run it fully.
 
-CLI (same harness root):
+Use **uv** for the venv and packages (`uv venv`, then `uv pip install -r` this skill's `requirements.txt`). Run the CLI with `uv run python`.
 
 ```bash
-python .github/skills/ragless-kb/scripts/kb.py python
+uv run python .github/skills/ragless-kb/scripts/kb.py python
 ```
 
 On Cursor, use `.cursor/skills/ragless-kb/scripts/kb.py` instead.

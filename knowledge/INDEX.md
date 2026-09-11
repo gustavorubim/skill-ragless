@@ -5,7 +5,7 @@ Last refresh: 2026-09-11 · 7 canonical documents (3 NIST PDFs + 4 Northwind fix
 Start here, then open a topic map, then search, then read `knowledge/docs/`.
 
 ```bash
-python .github/skills/ragless-kb/scripts/kb.py search "your question" --limit 12
+uv run python .github/skills/ragless-kb/scripts/kb.py search "your question" --limit 12
 ```
 
 ## Topic maps

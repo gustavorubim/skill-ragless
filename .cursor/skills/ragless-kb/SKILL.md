@@ -7,22 +7,33 @@ argument-hint: preprocess | refresh | validate | chat
 
 # Ragless KB
 
-Self-contained skill. It lives at `skills/ragless-kb/` next to `agents/` under `.github/` (Copilot) or `.cursor/` (Cursor). Custom agents: `agents/docs-builder.agent.md` (preprocess) and `agents/docs-chat.agent.md` (chat).
+Self-contained skill. It lives at `skills/ragless-kb/` next to `agents/` under `.github/` (Copilot) or `.cursor/` (Cursor). **Docs Builder** (`agents/docs-builder.agent.md`) and **Docs Chat** (`agents/docs-chat.agent.md`) are a pair — copy and use both. Builder preprocesses; Chat answers. Do not skip Chat after a build, and do not use Builder for document Q&A.
 
-Human docs: [README.md](README.md) · recipes: [cookbook.md](cookbook.md)
+Human docs: [README.md](README.md) · recipes: [cookbook.md](cookbook.md) · design: [technical-background.md](technical-background.md)
 
 Do not introduce embeddings or a vector database. Canonical evidence is Markdown in `knowledge/docs/` plus provenance back to `input/`.
 
+## Python with uv
+
+Use **uv** for the project virtualenv and packages. Do not use `python -m venv` or `pip` unless `uv` is missing.
+
+From the workspace root:
+
+1. If `uv` is not on PATH, stop and tell the user to install it: https://docs.astral.sh/uv/getting-started/installation/ (Windows: `irm https://astral.sh/uv/install.ps1 | iex`).
+2. `uv venv` — creates `.venv/` at the project root if needed.
+3. `uv pip install -r .github/skills/ragless-kb/requirements.txt` (on Cursor: `.cursor/skills/ragless-kb/requirements.txt`).
+4. Run every later command with `uv run python …` so the venv is used.
+
 ## Skill CLI
 
-CLI is [scripts/kb.py](scripts/kb.py) in **this folder**. From the workspace root:
+CLI is [scripts/kb.py](scripts/kb.py) in **this folder**. From the workspace root (swap `.github` for `.cursor` when this skill lives under `.cursor/skills/ragless-kb/`):
 
 ```bash
-python .github/skills/ragless-kb/scripts/kb.py python
-python .cursor/skills/ragless-kb/scripts/kb.py python
+uv run python .github/skills/ragless-kb/scripts/kb.py python
+uv run python .github/skills/ragless-kb/scripts/kb.py skill-path
 ```
 
-Use the copy you loaded. If this `SKILL.md` lives under `.cursor/skills/ragless-kb/`, substitute `.cursor/skills/ragless-kb` for `.github/skills/ragless-kb` in every command. Use the printed interpreter for later `kb.py` commands. `skill-path` prints this script's location.
+Use the printed interpreter only if you cannot use `uv run`. `skill-path` prints this script's location.
 
 Dependencies: [requirements.txt](requirements.txt)
 
@@ -55,7 +66,7 @@ knowledge/
 ### 1. Deterministic extraction
 
 ```bash
-python .github/skills/ragless-kb/scripts/kb.py ingest
+uv run python .github/skills/ragless-kb/scripts/kb.py ingest
 ```
 
 (`preprocess` is an alias.) Discovers supported files in `input/` (dotfiles and `README.md` ignored); hashes and skips unchanged conversions; writes `knowledge/docs/`; preserves agent-filled semantic frontmatter on re-extract; reports missing sources as `ORPHAN` without deleting canonical Markdown.
@@ -87,9 +98,9 @@ Keep `knowledge/INDEX.md` compact: size, last refresh, topic links, authoritativ
 ### 7. Rebuild catalog and search
 
 ```bash
-python .github/skills/ragless-kb/scripts/kb.py rebuild
-python .github/skills/ragless-kb/scripts/kb.py search "validation frequency" --limit 12
-python .github/skills/ragless-kb/scripts/kb.py status
+uv run python .github/skills/ragless-kb/scripts/kb.py rebuild
+uv run python .github/skills/ragless-kb/scripts/kb.py search "validation frequency" --limit 12
+uv run python .github/skills/ragless-kb/scripts/kb.py status
 ```
 
 Natural-language questions become OR terms (longest distinctive words first), ranked with BM25.
@@ -97,7 +108,7 @@ Natural-language questions become OR terms (longest distinctive words first), ra
 ### 8. Validate
 
 ```bash
-python .github/skills/ragless-kb/scripts/kb.py validate
+uv run python .github/skills/ragless-kb/scripts/kb.py validate
 ```
 
 Confirm: every supported input file is represented or failed; orphans reported; every canonical doc has a card; topic coverage; provenance present; search hits sensible.
@@ -107,7 +118,20 @@ Confirm: every supported input file is represented or failed; orphans reported; 
 If `eval/questions.json` exists at the workspace root:
 
 ```bash
-python .github/skills/ragless-kb/scripts/kb.py eval --k 5
+uv run python .github/skills/ragless-kb/scripts/kb.py eval --k 5
+```
+
+Large synthetic eval (~1000 docs, ~100 questions) is isolated under `eval/large/` so it does not replace the sample corpus. Generate, then point `KB_ROOT` at that folder:
+
+```bash
+uv run python .github/skills/ragless-kb/scripts/generate_large_eval.py --root eval/large --docs 1000 --questions 100
+```
+
+```powershell
+$env:KB_ROOT = "$PWD\eval\large"
+uv run python .github/skills/ragless-kb/scripts/kb.py ingest
+uv run python .github/skills/ragless-kb/scripts/kb.py rebuild
+uv run python .github/skills/ragless-kb/scripts/kb.py eval --k 5
 ```
 
 ### 10. Report

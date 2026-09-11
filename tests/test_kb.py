@@ -213,6 +213,27 @@ def test_fts_query_strips_stopwords():
     assert kbmod.fts_query("What is the validation frequency?") == "validation OR frequency"
 
 
+def test_large_eval_generator_tiny(kb_root: Path):
+    import subprocess
+
+    gen = ROOT / ".github" / "skills" / "ragless-kb" / "scripts" / "generate_large_eval.py"
+    proc = subprocess.run(
+        [sys.executable, str(gen), "--root", str(kb_root), "--docs", "12", "--questions", "6", "--seed", "1"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+    )
+    assert proc.returncode == 0, proc.stderr
+    assert len(list((kb_root / "input").glob("record-*"))) == 12
+    payload = json.loads((kb_root / "eval" / "questions.json").read_text(encoding="utf-8"))
+    assert len(payload["questions"]) == 6
+    run_kb(kb_root, "ingest")
+    run_kb(kb_root, "rebuild")
+    report = json.loads(run_kb(kb_root, "eval", "--k", "5", "--json").stdout)
+    assert report["hit_at_k"] == 6
+    assert report["snippet_hits"] == 6
+
+
 def test_skill_folder_is_self_contained():
     for base in (
         ROOT / ".github" / "skills" / "ragless-kb",
@@ -222,8 +243,10 @@ def test_skill_folder_is_self_contained():
             "SKILL.md",
             "README.md",
             "cookbook.md",
+            "technical-background.md",
             "requirements.txt",
             "scripts/kb.py",
+            "scripts/generate_large_eval.py",
             "references/chat.md",
             "references/qa-protocol.md",
         ):
@@ -241,5 +264,6 @@ def test_harness_is_agents_and_skills_only():
         skill = harness / "skills" / "ragless-kb"
         assert (skill / "SKILL.md").is_file()
         assert (skill / "scripts" / "kb.py").is_file()
+        assert (skill / "scripts" / "generate_large_eval.py").is_file()
         assert not (skill / "agents").exists()
         assert not (skill / "prompts").exists()

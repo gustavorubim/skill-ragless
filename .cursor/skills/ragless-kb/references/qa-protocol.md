@@ -5,7 +5,7 @@
 1. If the question is broad or topic-oriented, inspect `knowledge/INDEX.md`.
 2. Inspect one or more relevant topic maps.
 3. Use cards to shortlist sources, not to prove claims.
-4. Search with this skill's `scripts/kb.py search "..."` plus repo text search where useful.
+4. Search with `uv run python` and this skill's `scripts/kb.py search "..."` plus repo text search where useful.
 5. Read canonical Markdown sections that support the answer.
 6. Search again using synonyms, acronyms, entities, dates, and contrary terms if omission risk is material.
 

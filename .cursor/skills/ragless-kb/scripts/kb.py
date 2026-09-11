@@ -692,7 +692,7 @@ def main() -> None:
     sub.add_parser("rebuild", help="Regenerate catalog.json and the FTS5 index")
     sub.add_parser("status", help="Print corpus counts and last ingest time")
     sub.add_parser("validate", help="Check coverage, provenance, cards, index, and orphans")
-    sub.add_parser("python", help="Print the preferred interpreter (.venv if present)")
+    sub.add_parser("python", help="Print .venv interpreter if present (prefer uv run python)")
     sub.add_parser("skill-path", help="Print this kb.py path")
     search_parser = sub.add_parser("search", help="BM25/FTS5 search over canonical docs")
     search_parser.add_argument("query")

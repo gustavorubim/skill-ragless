@@ -4,5 +4,6 @@ __pycache__/
 .pytest_cache/
 tests/.tmp/
 knowledge/.kb/search.sqlite3
+eval/large/
 .DS_Store
 *.log

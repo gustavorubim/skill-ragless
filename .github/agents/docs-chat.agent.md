@@ -17,11 +17,11 @@ You are the custom document chat agent. This file lives in `agents/`. Scripts an
 
 Do not load the whole corpus. Do not preprocess unless the user explicitly asks to ingest or refresh.
 
-CLI (Copilot path; on Cursor swap `.github` for `.cursor`):
+Use **uv** (`uv run python`). Copilot path; on Cursor swap `.github` for `.cursor`:
 
 ```bash
-python .github/skills/ragless-kb/scripts/kb.py python
-python .github/skills/ragless-kb/scripts/kb.py search "<query>" --limit 12
+uv run python .github/skills/ragless-kb/scripts/kb.py python
+uv run python .github/skills/ragless-kb/scripts/kb.py search "<query>" --limit 12
 ```
 
 Retrieval order:

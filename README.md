@@ -16,7 +16,7 @@ Chat with a small document set without embeddings. The harness is **two folders*
 ## Workflow
 
 1. Drop files into `input/`.
-2. `./setup.ps1` or `./setup.sh`.
+2. `./setup.ps1` or `./setup.sh` (uses **uv** for `.venv` and packages).
 3. Select **Docs Builder** and send a preprocess prompt.
 4. Select **Docs Chat** and ask questions.
 
@@ -79,9 +79,28 @@ Answers should include markdown links to `knowledge/docs/` and the original `inp
 ## CLI
 
 ```bash
-python .github/skills/ragless-kb/scripts/kb.py python
-python .github/skills/ragless-kb/scripts/kb.py ingest
-python .github/skills/ragless-kb/scripts/kb.py search "MEASURE function exemption" --limit 12
+uv venv
+uv pip install -r .github/skills/ragless-kb/requirements.txt
+uv run python .github/skills/ragless-kb/scripts/kb.py python
+uv run python .github/skills/ragless-kb/scripts/kb.py ingest
+uv run python .github/skills/ragless-kb/scripts/kb.py search "MEASURE function exemption" --limit 12
 ```
 
-Recipes: [cookbook.md](.github/skills/ragless-kb/cookbook.md).
+Large eval (~1000 docs / ~100 questions), isolated under `eval/large/`:
+
+```bash
+uv venv
+uv pip install -r .github/skills/ragless-kb/requirements.txt
+uv pip install -r requirements.txt
+uv run python .github/skills/ragless-kb/scripts/generate_large_eval.py --root eval/large --docs 1000 --questions 100
+```
+
+```powershell
+$env:KB_ROOT = "$PWD\eval\large"
+uv run python .github/skills/ragless-kb/scripts/kb.py ingest
+uv run python .github/skills/ragless-kb/scripts/kb.py rebuild
+uv run python .github/skills/ragless-kb/scripts/kb.py validate
+uv run python .github/skills/ragless-kb/scripts/kb.py eval --k 5
+```
+
+Recipes: [cookbook.md](.github/skills/ragless-kb/cookbook.md). Design / BM25 / FTS5: [technical-background.md](.github/skills/ragless-kb/technical-background.md).
