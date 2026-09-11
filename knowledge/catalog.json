@@ -1,0 +1,198 @@
+[
+  {
+    "id": "faq-model-risk",
+    "title": "Northwind Model Risk FAQ",
+    "source_file": "input/faq-model-risk.txt",
+    "source_sha256": "c32820469fa568c41f73d8270eeb9071df9d6cb1d15d8f3be1fbe2068e2dda0f",
+    "document_type": "faq",
+    "date": "2026-06-15",
+    "version": null,
+    "authority": "official-guidance",
+    "status": "current",
+    "topics": [
+      "northwind",
+      "validation"
+    ],
+    "entities": [
+      "Model Risk Committee",
+      "MRC"
+    ],
+    "summary": "FAQ: challenger models follow the same annual validation cadence; emergency exceptions expire after ninety days.",
+    "extraction_warnings": [],
+    "path": "knowledge/docs/faq-model-risk.md",
+    "headings": [
+      "faq model risk",
+      "Northwind Model Risk FAQ",
+      "Validation cadence",
+      "Emergency exceptions",
+      "Contact"
+    ]
+  },
+  {
+    "id": "model-inventory",
+    "title": "Northwind Model Inventory",
+    "source_file": "input/model-inventory.csv",
+    "source_sha256": "ea658bc40655a6c3ae6f13a06b9606e10edbe07a009f569d1c7672778cdae272",
+    "document_type": "inventory",
+    "date": "2026-09",
+    "version": null,
+    "authority": "secondary",
+    "status": "current",
+    "topics": [
+      "northwind",
+      "model-inventory"
+    ],
+    "entities": [
+      "Credit-Decision-v4",
+      "GenAI-Contract-Summarizer"
+    ],
+    "summary": "Tabular inventory of five Northwind models including Credit-Decision-v4 (last validated 2025-11-02) and GenAI-Contract-Summarizer.",
+    "extraction_warnings": [],
+    "path": "knowledge/docs/model-inventory.md",
+    "headings": [
+      "model inventory"
+    ]
+  },
+  {
+    "id": "nist-ai-100-1",
+    "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+    "source_file": "input/NIST.AI.100-1.pdf",
+    "source_sha256": "7576edb531d9848825814ee88e28b1795d3a84b435b4b797d3670eafdc4a89f1",
+    "document_type": "framework",
+    "date": "2023-01",
+    "version": "1.0",
+    "authority": "formal-primary",
+    "status": "current",
+    "topics": [
+      "ai-risk",
+      "governance",
+      "trustworthy-ai"
+    ],
+    "entities": [
+      "NIST",
+      "AI RMF"
+    ],
+    "summary": "Voluntary NIST framework for identifying, assessing, and managing AI risks. Core functions are GOVERN, MAP, MEASURE, and MANAGE.",
+    "extraction_warnings": [],
+    "path": "knowledge/docs/nist-ai-100-1.md",
+    "headings": [
+      "Artificial Intelligence Risk Management Framework (AI RMF 1.0)"
+    ]
+  },
+  {
+    "id": "nist-ai-600-1",
+    "title": "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile",
+    "source_file": "input/NIST.AI.600-1.pdf",
+    "source_sha256": "6e73620ab6b64e90ef2c04bf0e0d6246185a2f4b1b13cab0df494496cff89b6a",
+    "document_type": "profile",
+    "date": "2024-07",
+    "version": "600-1",
+    "authority": "official-guidance",
+    "status": "current",
+    "topics": [
+      "generative-ai",
+      "ai-risk",
+      "governance"
+    ],
+    "entities": [
+      "NIST",
+      "AI RMF",
+      "GAI"
+    ],
+    "summary": "Cross-sectoral AI RMF profile for generative AI. Defines GAI-specific or exacerbated risks and suggested GOVERN/MAP/MEASURE/MANAGE actions.",
+    "extraction_warnings": [],
+    "path": "knowledge/docs/nist-ai-600-1.md",
+    "headings": [
+      "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile"
+    ]
+  },
+  {
+    "id": "nist-sp-1270",
+    "title": "Towards a Standard for Identifying and Managing Bias in Artificial Intelligence",
+    "source_file": "input/NIST.SP.1270.pdf",
+    "source_sha256": "334042ba11ed24d7446cc31967e6e1eb4921f50a17eec4eb14ef1bff078f1e09",
+    "document_type": "guidance",
+    "date": "2022-03",
+    "version": "1270",
+    "authority": "official-guidance",
+    "status": "current",
+    "topics": [
+      "bias",
+      "fairness",
+      "trustworthy-ai"
+    ],
+    "entities": [
+      "NIST"
+    ],
+    "summary": "NIST special publication on identifying and managing bias in AI, including statistical, computational, and human-system sources of bias.",
+    "extraction_warnings": [],
+    "path": "knowledge/docs/nist-sp-1270.md",
+    "headings": [
+      "Towards a Standard for Identifying and Managing Bias in Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "northwind-ai-governance-policy",
+    "title": "Northwind AI Governance Policy",
+    "source_file": "input/northwind-ai-governance-policy.docx",
+    "source_sha256": "c6082c656039b523d2079b030ea53e617b3626155d553db96b5451db6f82a987",
+    "document_type": "policy",
+    "date": "2026-04-01",
+    "version": "3.2",
+    "authority": "formal-primary",
+    "status": "current",
+    "topics": [
+      "northwind",
+      "validation",
+      "governance",
+      "ai-risk"
+    ],
+    "entities": [
+      "Northwind Bank",
+      "Model Risk Committee",
+      "MRC"
+    ],
+    "summary": "Internal Northwind policy: annual independent validation, 90-day emergency exceptions, and a cost-based MEASURE exemption that is not in NIST AI RMF 1.0.",
+    "extraction_warnings": [],
+    "path": "knowledge/docs/northwind-ai-governance-policy.md",
+    "headings": [
+      "northwind ai governance policy",
+      "Northwind AI Governance Policy",
+      "Purpose",
+      "Independent validation",
+      "Emergency exceptions",
+      "MEASURE function exemption",
+      "Generative AI"
+    ]
+  },
+  {
+    "id": "q3-model-inventory",
+    "title": "Q3 2026 Model Inventory Briefing",
+    "source_file": "input/q3-model-inventory.pptx",
+    "source_sha256": "3b3a07babb1ea1cc5e4315265cf5868bd2f5ac9e915e2777094b9823ee788a0c",
+    "document_type": "briefing",
+    "date": "2026-09-08",
+    "version": null,
+    "authority": "secondary",
+    "status": "current",
+    "topics": [
+      "northwind",
+      "model-inventory",
+      "governance"
+    ],
+    "entities": [
+      "Northwind Bank",
+      "Credit-Decision-v4",
+      "Chief Risk Officer"
+    ],
+    "summary": "Q3 2026 MRC briefing: 47 production models, 12 in validation queue, Credit-Decision-v4 as highest-risk, and NIST function owners.",
+    "extraction_warnings": [],
+    "path": "knowledge/docs/q3-model-inventory.md",
+    "headings": [
+      "q3 model inventory",
+      "Slide 1",
+      "Slide 2",
+      "Slide 3"
+    ]
+  }
+]

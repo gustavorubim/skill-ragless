@@ -1,0 +1,61 @@
+{
+  "files": {
+    "input/faq-model-risk.txt": {
+      "sha256": "c32820469fa568c41f73d8270eeb9071df9d6cb1d15d8f3be1fbe2068e2dda0f",
+      "id": "faq-model-risk",
+      "doc": "knowledge/docs/faq-model-risk.md",
+      "source": "input/faq-model-risk.txt",
+      "updated_at": "2026-09-11T13:00:17.394737+00:00",
+      "orphaned": false
+    },
+    "input/model-inventory.csv": {
+      "sha256": "ea658bc40655a6c3ae6f13a06b9606e10edbe07a009f569d1c7672778cdae272",
+      "id": "model-inventory",
+      "doc": "knowledge/docs/model-inventory.md",
+      "source": "input/model-inventory.csv",
+      "updated_at": "2026-09-11T13:00:17.404177+00:00",
+      "orphaned": false
+    },
+    "input/NIST.AI.100-1.pdf": {
+      "sha256": "7576edb531d9848825814ee88e28b1795d3a84b435b4b797d3670eafdc4a89f1",
+      "id": "nist-ai-100-1",
+      "doc": "knowledge/docs/nist-ai-100-1.md",
+      "source": "input/NIST.AI.100-1.pdf",
+      "updated_at": "2026-09-11T13:00:18.027967+00:00",
+      "orphaned": false
+    },
+    "input/NIST.AI.600-1.pdf": {
+      "sha256": "6e73620ab6b64e90ef2c04bf0e0d6246185a2f4b1b13cab0df494496cff89b6a",
+      "id": "nist-ai-600-1",
+      "doc": "knowledge/docs/nist-ai-600-1.md",
+      "source": "input/NIST.AI.600-1.pdf",
+      "updated_at": "2026-09-11T13:00:20.126412+00:00",
+      "orphaned": false
+    },
+    "input/NIST.SP.1270.pdf": {
+      "sha256": "334042ba11ed24d7446cc31967e6e1eb4921f50a17eec4eb14ef1bff078f1e09",
+      "id": "nist-sp-1270",
+      "doc": "knowledge/docs/nist-sp-1270.md",
+      "source": "input/NIST.SP.1270.pdf",
+      "updated_at": "2026-09-11T13:00:21.775525+00:00",
+      "orphaned": false
+    },
+    "input/northwind-ai-governance-policy.docx": {
+      "sha256": "c6082c656039b523d2079b030ea53e617b3626155d553db96b5451db6f82a987",
+      "id": "northwind-ai-governance-policy",
+      "doc": "knowledge/docs/northwind-ai-governance-policy.md",
+      "source": "input/northwind-ai-governance-policy.docx",
+      "updated_at": "2026-09-11T13:00:21.922556+00:00",
+      "orphaned": false
+    },
+    "input/q3-model-inventory.pptx": {
+      "sha256": "3b3a07babb1ea1cc5e4315265cf5868bd2f5ac9e915e2777094b9823ee788a0c",
+      "id": "q3-model-inventory",
+      "doc": "knowledge/docs/q3-model-inventory.md",
+      "source": "input/q3-model-inventory.pptx",
+      "updated_at": "2026-09-11T13:00:22.082348+00:00",
+      "orphaned": false
+    }
+  },
+  "last_ingest": "2026-09-11T13:00:22.084124+00:00"
+}

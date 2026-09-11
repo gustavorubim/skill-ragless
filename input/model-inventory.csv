@@ -1,0 +1,6 @@
+model_id,name,owner,risk_tier,status,last_validation
+NW-001,Credit-Decision-v4,Retail Credit,high,production,2025-11-02
+NW-014,Fraud-Graph-v2,Payments,high,production,2026-01-18
+NW-022,Marketing-Propensity-v9,Growth,medium,production,2025-08-30
+NW-031,HR-Screening-Assist,People Analytics,high,validation-queue,never
+NW-044,GenAI-Contract-Summarizer,Legal Ops,high,production,2026-03-01

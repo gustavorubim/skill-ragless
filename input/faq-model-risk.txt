@@ -1,0 +1,18 @@
+# Northwind Model Risk FAQ
+
+Last updated: 2026-06-15
+Owner: Model Risk Management Office
+
+## Validation cadence
+
+Challenger models follow the same annual independent validation cadence as production models
+unless an emergency exception is approved by the Model Risk Committee (MRC).
+
+## Emergency exceptions
+
+Emergency exceptions expire after ninety (90) days. A model may not remain in production
+on an expired exception.
+
+## Contact
+
+Questions: model-risk@northwind.example

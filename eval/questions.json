@@ -1,0 +1,90 @@
+{
+  "k": 5,
+  "notes": "Gold questions for the bundled NIST + Northwind sample corpus. Retrieval hit@k is any expected doc id in the top-k BM25 results. Snippet checks look in canonical Markdown.",
+  "questions": [
+    {
+      "id": "rmf-four-functions",
+      "question": "What are the four core functions of the NIST AI Risk Management Framework?",
+      "expected_doc_ids": ["nist-ai-100-1"],
+      "must_contain": ["GOVERN", "MAP", "MEASURE", "MANAGE"],
+      "gold": "The AI RMF Core is organized into four functions: GOVERN, MAP, MEASURE, and MANAGE."
+    },
+    {
+      "id": "rmf-voluntary",
+      "question": "Is the NIST AI Risk Management Framework mandatory or voluntary?",
+      "expected_doc_ids": ["nist-ai-100-1"],
+      "must_contain": ["voluntary"],
+      "gold": "The AI RMF is intended to be voluntary."
+    },
+    {
+      "id": "trustworthy-characteristics",
+      "question": "What are the characteristics of trustworthy AI in the NIST AI RMF?",
+      "expected_doc_ids": ["nist-ai-100-1"],
+      "must_contain": ["valid and reliable", "privacy"],
+      "gold": "Trustworthy AI is valid and reliable, safe, secure and resilient, accountable and transparent, explainable and interpretable, privacy-enhanced, and fair with harmful bias managed."
+    },
+    {
+      "id": "genai-profile-purpose",
+      "question": "What is the NIST Generative AI Profile intended to help organizations do?",
+      "expected_doc_ids": ["nist-ai-600-1"],
+      "must_contain": ["generative"],
+      "gold": "NIST AI 600-1 is a profile of the AI RMF for generative AI risks and actions."
+    },
+    {
+      "id": "bias-sp1270",
+      "question": "What does NIST SP 1270 address regarding bias in artificial intelligence?",
+      "expected_doc_ids": ["nist-sp-1270"],
+      "must_contain": ["bias"],
+      "gold": "NIST SP 1270 provides guidance toward identifying and managing bias in AI."
+    },
+    {
+      "id": "northwind-annual-validation",
+      "question": "How often must Northwind production models receive independent validation?",
+      "expected_doc_ids": ["northwind-ai-governance-policy"],
+      "must_contain": ["annually"],
+      "gold": "Every Northwind model in production must receive independent validation at least annually."
+    },
+    {
+      "id": "emergency-exception-90-days",
+      "question": "How long do Northwind emergency production exceptions last before they expire?",
+      "expected_doc_ids": ["northwind-ai-governance-policy", "faq-model-risk"],
+      "must_contain": ["ninety"],
+      "gold": "Emergency exceptions expire after ninety days."
+    },
+    {
+      "id": "measure-exemption-conflict",
+      "question": "Are any Northwind AI systems exempt from the NIST AI RMF MEASURE function?",
+      "expected_doc_ids": ["northwind-ai-governance-policy"],
+      "must_contain": ["250,000"],
+      "gold": "Northwind exempts AI systems with forecast annual spend under USD 250,000 from MEASURE. NIST AI RMF 1.0 does not state that exemption."
+    },
+    {
+      "id": "credit-decision-model",
+      "question": "What is Northwind's highest-risk production model and when was it last validated?",
+      "expected_doc_ids": ["q3-model-inventory", "model-inventory"],
+      "must_contain": ["Credit-Decision-v4"],
+      "gold": "Credit-Decision-v4 (NW-001) is the highest-risk production model; last independent validation 2025-11-02."
+    },
+    {
+      "id": "production-model-count",
+      "question": "How many production models does Northwind have in the Q3 2026 inventory briefing?",
+      "expected_doc_ids": ["q3-model-inventory"],
+      "must_contain": ["47 production models"],
+      "gold": "47 production models."
+    },
+    {
+      "id": "govern-owner",
+      "question": "Who owns the GOVERN function in Northwind's NIST AI RMF ownership map?",
+      "expected_doc_ids": ["q3-model-inventory"],
+      "must_contain": ["Chief Risk Officer"],
+      "gold": "GOVERN owner is the Chief Risk Officer."
+    },
+    {
+      "id": "challenger-cadence",
+      "question": "Do Northwind challenger models follow the same validation cadence as production models?",
+      "expected_doc_ids": ["faq-model-risk"],
+      "must_contain": ["Challenger models"],
+      "gold": "Challenger models follow the same annual independent validation cadence as production models unless an MRC emergency exception is approved."
+    }
+  ]
+}
