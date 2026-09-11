@@ -1,6 +1,6 @@
 # Grounded chat eval
 
-Sample corpus: 3 NIST PDFs + 4 Northwind fixtures. Retrieval eval (`python scripts/kb.py eval --k 5`): **12/12 hit@5** and **12/12 gold snippets** present in canonical Markdown.
+Sample corpus: 3 NIST PDFs + 4 Northwind fixtures. Retrieval eval (`python .github/skills/ragless-kb/scripts/kb.py eval --k 5`): **12/12 hit@5** and **12/12 gold snippets** present in canonical Markdown.
 
 These answers were produced with the Docs Chat protocol: `knowledge/INDEX.md` → topic map → `kb.py search` → canonical `knowledge/docs/` → citations with file links. Cards were not used as evidence.
 
@@ -58,7 +58,7 @@ None versus the internal policy's annual-validation rule.
 The knowledge base does not establish this. Search over CEO / compensation / salary and the Northwind topic map did not yield a compensation figure. Hits on “compensation” in NIST AI 600-1 refer to human-subjects research practices, not executive pay.
 
 ### Sources
-- Searched: `knowledge/INDEX.md`, `knowledge/topics/northwind-model-risk.md`, `python scripts/kb.py search "Northwind CEO compensation salary"`
+- Searched: `knowledge/INDEX.md`, `knowledge/topics/northwind-model-risk.md`, `python .github/skills/ragless-kb/scripts/kb.py search "Northwind CEO compensation salary"`
 - No canonical document states CEO compensation.
 
 ### Conflicts or limits

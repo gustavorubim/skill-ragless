@@ -226,6 +226,20 @@ def test_skill_folder_is_self_contained():
             "scripts/kb.py",
             "references/chat.md",
             "references/qa-protocol.md",
-            "agents/docs-chat.agent.md",
         ):
             assert (base / name).is_file(), f"missing {base / name}"
+        assert not (base / "agents").exists()
+        assert not (base / "prompts").exists()
+
+
+def test_harness_is_agents_and_skills_only():
+    for harness in (ROOT / ".github", ROOT / ".cursor"):
+        names = sorted(p.name for p in harness.iterdir() if not p.name.startswith("."))
+        assert names == ["agents", "skills"], f"{harness} had {names}"
+        agents = sorted(p.name for p in (harness / "agents").glob("*.md"))
+        assert agents == ["docs-builder.agent.md", "docs-chat.agent.md"]
+        skill = harness / "skills" / "ragless-kb"
+        assert (skill / "SKILL.md").is_file()
+        assert (skill / "scripts" / "kb.py").is_file()
+        assert not (skill / "agents").exists()
+        assert not (skill / "prompts").exists()

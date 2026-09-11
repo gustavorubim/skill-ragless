@@ -1,7 +1,0 @@
----
-description: Ragless knowledge-base operating rules for this workspace
-globs: knowledge/**
-alwaysApply: false
----
-
-Treat `knowledge/docs/` as canonical. Cards, topics, INDEX.md, catalog.json, and the SQLite index are navigation aids. Do not delete `input/` originals. Cite answers with markdown links to both `knowledge/docs/` and the original `input/` file.

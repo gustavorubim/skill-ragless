@@ -7,7 +7,7 @@ argument-hint: preprocess | refresh | validate | chat
 
 # Ragless KB
 
-Self-contained skill. This folder is the package: copy it to `.github/skills/ragless-kb/` (VS Code / Copilot) or `.cursor/skills/ragless-kb/` (Cursor).
+Self-contained skill. It lives at `skills/ragless-kb/` next to `agents/` under `.github/` (Copilot) or `.cursor/` (Cursor). Custom agents: `agents/docs-builder.agent.md` (preprocess) and `agents/docs-chat.agent.md` (chat).
 
 Human docs: [README.md](README.md) · recipes: [cookbook.md](cookbook.md)
 

@@ -1,61 +1,87 @@
 # Ragless Document Knowledge Base
 
-Skill-first kit for chatting with a small document set (about 20–30 files) without embeddings or a vector database.
+Chat with a small document set without embeddings. The harness is **two folders**: `agents/` and `skills/`.
 
-The skill is a **self-contained folder**. Copy it; do not hunt for files elsewhere.
+```text
+.github/                         Copilot / VS Code
+  agents/docs-builder.agent.md   preprocess
+  agents/docs-chat.agent.md      custom chat
+  skills/ragless-kb/             CLI + instructions
 
-| Harness | Copy this folder to |
-| --- | --- |
-| VS Code / GitHub Copilot | `.github/skills/ragless-kb/` |
-| Cursor | `.cursor/skills/ragless-kb/` |
-
-Inside that folder: `SKILL.md`, [README.md](.github/skills/ragless-kb/README.md), [cookbook.md](.github/skills/ragless-kb/cookbook.md), CLI, templates, agents, and prompts.
+.cursor/                         Cursor (same pair)
+  agents/…
+  skills/ragless-kb/
+```
 
 ## Workflow
 
-1. Copy the skill folder (see above). This demo repo already has both copies.
-2. Drop files into `input/` (subfolders are fine).
-3. Install deps once: `./setup.ps1` or `./setup.sh`, or `pip install -r .github/skills/ragless-kb/requirements.txt`.
-4. Preprocess: select **Docs Builder** and say `preprocess`, or `/ragless-kb preprocess`.
-5. Chat: select **Docs Chat**, or `/ragless-kb` plus a question. Answers include links to `knowledge/docs/` and `input/`.
+1. Drop files into `input/`.
+2. `./setup.ps1` or `./setup.sh`.
+3. Select **Docs Builder** and send a preprocess prompt.
+4. Select **Docs Chat** and ask questions.
 
-Enable Agent Skills in VS Code if the slash command does not appear: `chat.useAgentSkills`.
+## Sample prompts
 
-Step-by-step recipes: [cookbook.md](.github/skills/ragless-kb/cookbook.md).
+### 1. Preprocess (Docs Builder)
 
-## Why this is not RAG
-
-The skill converts sources into readable Markdown, then builds `INDEX.md`, document cards, topic maps, and a disposable SQLite FTS5/BM25 index. The chat agent navigates those files. Evidence stays in git-friendly Markdown with provenance.
-
-## Layout
+Select **Docs Builder**, then send one of these:
 
 ```text
-.github/skills/ragless-kb/   Copilot copy of the skill (self-contained)
-.cursor/skills/ragless-kb/   Cursor copy of the skill (identical)
-.github/agents/              Docs Builder + Docs Chat (copied from the skill)
-input/                       drop originals here
-knowledge/                   generated corpus map, docs, cards, topics
-eval/questions.json          optional retrieval eval
+preprocess
 ```
 
-## CLI
+```text
+Preprocess everything in input/. Convert PDF, DOCX, PPTX, and other files to Markdown, enrich metadata, build INDEX.md, topic maps, and search, then validate.
+```
 
-From this demo repo you can still run `python scripts/kb.py` (wrapper). After copying only the skill, use the skill path:
+```text
+refresh
+```
+
+```text
+Validate the knowledge base and tell me what is missing or weakly extracted.
+```
+
+### 2. Chat (Docs Chat)
+
+After preprocess, select **Docs Chat**. Try:
+
+```text
+What are the four core functions of the NIST AI Risk Management Framework? Cite the files.
+```
+
+```text
+Is the NIST AI RMF mandatory or voluntary?
+```
+
+```text
+Are any Northwind AI systems exempt from the MEASURE function? Do the NIST documents agree?
+```
+
+```text
+What is Northwind's highest-risk production model, and when was it last validated?
+```
+
+```text
+Do challenger models follow the same validation cadence as production models?
+```
+
+```text
+Where do the documents disagree? Quote each side and link the sources.
+```
+
+```text
+Summarize the major themes in this corpus, which document is authoritative for each, and where evidence is thin.
+```
+
+Answers should include markdown links to `knowledge/docs/` and the original `input/` files.
+
+## CLI
 
 ```bash
 python .github/skills/ragless-kb/scripts/kb.py python
 python .github/skills/ragless-kb/scripts/kb.py ingest
 python .github/skills/ragless-kb/scripts/kb.py search "MEASURE function exemption" --limit 12
-python .github/skills/ragless-kb/scripts/kb.py eval --k 5
 ```
 
-## Sample corpus and eval
-
-```bash
-python .github/skills/ragless-kb/scripts/fetch_eval_docs.py
-python .github/skills/ragless-kb/scripts/make_sample_docs.py
-```
-
-Then preprocess and `eval --k 5`. Bundled sample: **12/12 hit@5** and **12/12 gold snippets**. Grounded Q&A examples: [eval/chat-results.md](eval/chat-results.md).
-
-NIST publications used for eval are U.S. government works.
+Recipes: [cookbook.md](.github/skills/ragless-kb/cookbook.md).
